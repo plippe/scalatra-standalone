@@ -7,3 +7,6 @@ libraryDependencies ++= Seq(
 )
 
 enablePlugins(JettyPlugin)
+
+libraryDependencies += "com.github.plippe" %% "scalatra-standalone" % "0.0.1-SNAPSHOT"
+mainClass in (Compile, run) := Some("com.github.plippe.scalatra.standalone.Main")
