@@ -1,4 +1,3 @@
-import com.github.plippe.scalatra.standalone.test._
 import org.scalatra._
 import javax.servlet.ServletContext
 
