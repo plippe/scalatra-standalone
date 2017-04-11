@@ -1,8 +1,6 @@
 organization := "com.github.plippe"
 name := "scalatra-standalone"
 
-version := "0.0.3-SNAPSHOT"
-
 scalaVersion := "2.12.1"
 
 libraryDependencies ++= Seq(
@@ -35,3 +33,19 @@ pomExtra := {
       </developer>
     </developers>
 }
+
+import ReleaseTransformations._
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  ReleaseStep(action = Command.process("publishSigned", _)),
+  setNextVersion,
+  commitNextVersion,
+  ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
+  pushChanges
+)
